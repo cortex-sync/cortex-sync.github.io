@@ -1,0 +1,23 @@
+---
+title: "Covariance matrix is PSD"
+categories: [statistics]
+title-block-banner: false
+---
+
+The covariance of two random variables $X$ and $Y$ is defined as:
+
+$$
+Cov(X,Y) = \mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])]
+$$
+
+For a multivariate random variable $Z \in \mathbb{R}^n$, the covariance matrix is $\Sigma_{ij} = Cov(Z_i, Z_j) = \mathbb{E}[(Z-\mu)(Z-\mu)^T]$, where $\mu$ is the mean value of $Z$. Prove that the covariance matrix is always positive semidefinite (PSD) using linearity of expectation.
+
+
+For any vector $v \in \mathbb{R}^{n}$, we have that:
+
+$\begin{aligned} v^T \mathbb{E}[(X-\mu)(X-\mu)^T]v 
+&= \sum_{i=1}^{n}\sum_{j=1}^{n}\mathbb{E}[(X_i-\mu_i)(X_j - \mu_j)]v_i v_j \\ 
+&= \mathbb{E}\left[\sum_{i=1}^{n}\sum_{j=1}^{n}(X_i-\mu_i)(X_j - \mu_j)v_i v_j\right] \quad \text{(by linearity of expectation)} \\ 
+&=\mathbb{E}[v^T (X-\mu)(X-\mu)^T v] \\ 
+&= \mathbb{E}[((X-\mu)^2v)^2] \geq 0 \end{aligned}$
+---

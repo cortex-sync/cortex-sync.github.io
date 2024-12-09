@@ -1,0 +1,9 @@
+---
+title: "About"
+about:
+  template: jolla
+---
+
+This website contains a collection of random notes by [Viet Nguyen](https://quocviethere.github.io) for learning and self-reference purposes. 
+The name Cortex is based on the fact that it is the brain region essential for problem-solving, reasoning, and working memory. If I die someday, this will be my digital footprint.
+

@@ -1,0 +1,44 @@
+---
+title: "Softmax Regression Derivation from scratch"
+categories: [machine-learning]
+title-block-banner: false
+---
+
+Binary Cross-entropy loss function: 
+
+$L= -y_0 \log \hat{y}_0 - y_1 \log \hat{y}_1$, where:
+
+ - $\hat{y}_0=P(y=0 \vert x) = \dfrac{\exp(z_0)}{\sum_{j=0}^{1} \exp(z_j)}$ 
+
+  - $\hat{y}_1=P(y=1 \vert x) = \dfrac{\exp(z_1)}{\sum{j=0}^{1} \exp(z_j)}$
+
+$\dfrac{\partial L}{\partial \hat{y}_0} = -\dfrac{y_0}{\hat{y}_0}$ and $\dfrac{\partial L}{\partial \hat{y}_1} = -\dfrac{y_1}{\hat{y}_1}$
+
+
+$$
+\begin{aligned} 
+\dfrac{\partial \hat{y}_0}{\partial z_0} 
+&= \dfrac{\partial}{\partial z_0} \dfrac{\exp(z_0)}{\sum_{j=0}^1 \exp(z_j)} \\ 
+&= \dfrac{\exp(z_0)\sum_{j=0}^1\exp(z_j) - \exp(z_0)\exp(z_0)}{(\sum_{j=0}^{1} \exp(z_j))^2} \\ 
+&= \dfrac{\exp(z_0)(\sum_{j=0}^1 \exp(z_j)-\exp(z_0))}{(\sum_{j=0}^1 \exp(z_j))^2} \\ 
+&= \dfrac{\exp(z_0)}{\sum_{j=0}^1 \exp(z_j)}\left(\dfrac{\sum_{j=0}^1 \exp(z_j)-\exp(z_0)}{\sum_{j=0}^1 \exp(z_j)}\right)  \\ 
+&= \hat{y}_0 (1-\hat{y}_0)
+\end{aligned}
+$$
+
+
+$\begin{aligned} \dfrac{\partial \hat{y}_0}{\partial z_1} &= \dfrac{\partial}{\partial z_1} \dfrac{\exp(z_0)}{\sum_{j=0}^1 \exp(z_j)} \\ &= \exp(z_0) \dfrac{\partial}{\partial z_1} \dfrac{1}{\sum_{j=0}^1 \exp(z_j)} \\ &= \exp(z_0) \dfrac{-\exp(z_1)}{(\sum_{j=0}^1\exp(z_j))^2} \\ &= \dfrac{\exp(z_0)}{\sum_{j=0}^1\exp(z_j)}\dfrac{-\exp(z_1)}{\sum_{j=0}^1\exp(z_j)} \\ &= -\hat{y}_0\hat{y}_1 \end{aligned}$
+
+
+Following the same procedure, we obtain that $\dfrac{\partial \hat{y}_1}{\partial z_1} = \hat{y}_1(1-\hat{y}_1)$ and $\dfrac{\partial \hat{y}_1}{\partial z_0} = -\hat{y}_0 \hat{y}_1$.
+
+
+$\begin{aligned}\dfrac{\partial L}{\partial z_0} &= \dfrac{\partial L}{\partial \hat{y}_0}\dfrac{\partial \hat{y}_0}{\partial {z_0}} + \dfrac{\partial L}{\partial \hat{y}_1}\dfrac{\partial \hat{y}_1}{\partial {z_0}} \\ &= \dfrac{-y_0}{\hat{y}_0} \hat{y}_0 (1-\hat{y}_0) - \dfrac{y_1}{\hat{y}_1} (-\hat{y}_0 \hat{y}_1) \\ &= -y_0 + y_0 \hat{y}_0 + y_1 \hat{y}_0 \\ &= \hat{y}_0 (y_0 + y_1) - y_0 = \hat{y}_0-y_0\end{aligned}$
+
+
+$\dfrac{\partial L}{\partial w_0} = x(\hat{y}_0 - y_0)$
+
+<footer>
+  <div id="footer-quote">Loading a random quote...</div>
+  <script src="../random-quote.js"></script>
+</footer>

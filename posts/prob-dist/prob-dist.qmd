@@ -1,0 +1,17 @@
+---
+title: "Common Probability Distributions"
+categories: [statistics]
+title-block-banner: false
+---
+
+# Bernoulli
+
+# Binomial
+
+# Poisson
+
+# (Multivariate) Gaussian
+
+# Dirichlet
+
+# Beta

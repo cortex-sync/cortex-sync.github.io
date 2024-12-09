@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This website contains a collection of random notes by Viet Nguyen for learning and self-reference purposes. The name Cortex is based on the fact that it is the brain region essential for problem-solving, reasoning, and working memory. If I die someday, this will be my digital footprint."
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Cortex",
+    "section": "",
+    "text": "Title\n\n\nCategories\n\n\n\n\n\n\nCommon Probability Distributions\n\n\nstatistics\n\n\n\n\nCovariance matrix is PSD\n\n\nstatistics\n\n\n\n\nJensen’s inequality\n\n\nstatistics, optimization\n\n\n\n\nSoftmax Regression Derivation from scratch\n\n\nmachine-learning\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/Covariance-PSD/covariance-psd.html",
+    "href": "posts/Covariance-PSD/covariance-psd.html",
+    "title": "Covariance matrix is PSD",
+    "section": "",
+    "text": "The covariance of two random variables \\(X\\) and \\(Y\\) is defined as:\n\\[\nCov(X,Y) = \\mathbb{E}[(X-\\mathbb{E}[X])(Y-\\mathbb{E}[Y])]\n\\]\nFor a multivariate random variable \\(Z \\in \\mathbb{R}^n\\), the covariance matrix is \\(\\Sigma_{ij} = Cov(Z_i, Z_j) = \\mathbb{E}[(Z-\\mu)(Z-\\mu)^T]\\), where \\(\\mu\\) is the mean value of \\(Z\\). Prove that the covariance matrix is always positive semidefinite (PSD) using linearity of expectation.\nFor any vector \\(v \\in \\mathbb{R}^{n}\\), we have that:\n\\(\\begin{aligned} v^T \\mathbb{E}[(X-\\mu)(X-\\mu)^T]v\n&= \\sum_{i=1}^{n}\\sum_{j=1}^{n}\\mathbb{E}[(X_i-\\mu_i)(X_j - \\mu_j)]v_i v_j \\\\\n&= \\mathbb{E}\\left[\\sum_{i=1}^{n}\\sum_{j=1}^{n}(X_i-\\mu_i)(X_j - \\mu_j)v_i v_j\\right] \\quad \\text{(by linearity of expectation)} \\\\\n&=\\mathbb{E}[v^T (X-\\mu)(X-\\mu)^T v] \\\\\n&= \\mathbb{E}[((X-\\mu)^2v)^2] \\geq 0 \\end{aligned}\\)"
+  },
+  {
+    "objectID": "posts/SoftmaxRegression/softmax-regression.html",
+    "href": "posts/SoftmaxRegression/softmax-regression.html",
+    "title": "Softmax Regression Derivation from scratch",
+    "section": "",
+    "text": "Binary Cross-entropy loss function:\n\\(L= -y_0 \\log \\hat{y}_0 - y_1 \\log \\hat{y}_1\\), where:\n\n\\(\\hat{y}_0=P(y=0 \\vert x) = \\dfrac{\\exp(z_0)}{\\sum_{j=0}^{1} \\exp(z_j)}\\)\n\\(\\hat{y}_1=P(y=1 \\vert x) = \\dfrac{\\exp(z_1)}{\\sum{j=0}^{1} \\exp(z_j)}\\)\n\n\\(\\dfrac{\\partial L}{\\partial \\hat{y}_0} = -\\dfrac{y_0}{\\hat{y}_0}\\) and \\(\\dfrac{\\partial L}{\\partial \\hat{y}_1} = -\\dfrac{y_1}{\\hat{y}_1}\\)\n\\[\n\\begin{aligned}\n\\dfrac{\\partial \\hat{y}_0}{\\partial z_0}\n&= \\dfrac{\\partial}{\\partial z_0} \\dfrac{\\exp(z_0)}{\\sum_{j=0}^1 \\exp(z_j)} \\\\\n&= \\dfrac{\\exp(z_0)\\sum_{j=0}^1\\exp(z_j) - \\exp(z_0)\\exp(z_0)}{(\\sum_{j=0}^{1} \\exp(z_j))^2} \\\\\n&= \\dfrac{\\exp(z_0)(\\sum_{j=0}^1 \\exp(z_j)-\\exp(z_0))}{(\\sum_{j=0}^1 \\exp(z_j))^2} \\\\\n&= \\dfrac{\\exp(z_0)}{\\sum_{j=0}^1 \\exp(z_j)}\\left(\\dfrac{\\sum_{j=0}^1 \\exp(z_j)-\\exp(z_0)}{\\sum_{j=0}^1 \\exp(z_j)}\\right)  \\\\\n&= \\hat{y}_0 (1-\\hat{y}_0)\n\\end{aligned}\n\\]\n\\(\\begin{aligned} \\dfrac{\\partial \\hat{y}_0}{\\partial z_1} &= \\dfrac{\\partial}{\\partial z_1} \\dfrac{\\exp(z_0)}{\\sum_{j=0}^1 \\exp(z_j)} \\\\ &= \\exp(z_0) \\dfrac{\\partial}{\\partial z_1} \\dfrac{1}{\\sum_{j=0}^1 \\exp(z_j)} \\\\ &= \\exp(z_0) \\dfrac{-\\exp(z_1)}{(\\sum_{j=0}^1\\exp(z_j))^2} \\\\ &= \\dfrac{\\exp(z_0)}{\\sum_{j=0}^1\\exp(z_j)}\\dfrac{-\\exp(z_1)}{\\sum_{j=0}^1\\exp(z_j)} \\\\ &= -\\hat{y}_0\\hat{y}_1 \\end{aligned}\\)\nFollowing the same procedure, we obtain that \\(\\dfrac{\\partial \\hat{y}_1}{\\partial z_1} = \\hat{y}_1(1-\\hat{y}_1)\\) and \\(\\dfrac{\\partial \\hat{y}_1}{\\partial z_0} = -\\hat{y}_0 \\hat{y}_1\\).\n\\(\\begin{aligned}\\dfrac{\\partial L}{\\partial z_0} &= \\dfrac{\\partial L}{\\partial \\hat{y}_0}\\dfrac{\\partial \\hat{y}_0}{\\partial {z_0}} + \\dfrac{\\partial L}{\\partial \\hat{y}_1}\\dfrac{\\partial \\hat{y}_1}{\\partial {z_0}} \\\\ &= \\dfrac{-y_0}{\\hat{y}_0} \\hat{y}_0 (1-\\hat{y}_0) - \\dfrac{y_1}{\\hat{y}_1} (-\\hat{y}_0 \\hat{y}_1) \\\\ &= -y_0 + y_0 \\hat{y}_0 + y_1 \\hat{y}_0 \\\\ &= \\hat{y}_0 (y_0 + y_1) - y_0 = \\hat{y}_0-y_0\\end{aligned}\\)\n\\(\\dfrac{\\partial L}{\\partial w_0} = x(\\hat{y}_0 - y_0)\\)\n\n\nLoading a random quote…"
+  },
+  {
+    "objectID": "posts/prob-dist/prob-dist.html",
+    "href": "posts/prob-dist/prob-dist.html",
+    "title": "Common Probability Distributions",
+    "section": "",
+    "text": "Bernoulli\n\n\nBinomial\n\n\nPoisson\n\n\n(Multivariate) Gaussian\n\n\nDirichlet\n\n\nBeta"
+  },
+  {
+    "objectID": "posts/jensen.html",
+    "href": "posts/jensen.html",
+    "title": "Jensen’s inequality",
+    "section": "",
+    "text": "Given a convex function \\(f\\) and a random variable \\(X\\), the Jensen’s inequality states that:\n\\[\n\\mathbb{E}[f(X)] \\geq f(\\mathbb{E}[X])\n\\]\nProof"
+  }
+]

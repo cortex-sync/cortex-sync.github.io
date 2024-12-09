@@ -1,0 +1,26 @@
+{
+  "posts/post-with-code/index.qmd": {
+    "index.html": "c430d892"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "e4b2a5b9"
+  },
+  "index.qmd": {
+    "index.html": "ea144299"
+  },
+  "about.qmd": {
+    "about.html": "a2130a08"
+  },
+  "posts/Covariance-PSD/covariance-psd.qmd": {
+    "covariance-psd.html": "a2dfa7b4"
+  },
+  "posts/SoftmaxRegression/softmax-regression.qmd": {
+    "softmax-regression.html": "94db7211"
+  },
+  "posts/prob-dist/prob-dist.qmd": {
+    "prob-dist.html": "f0e84b9c"
+  },
+  "posts/jensen.qmd": {
+    "jensen.html": "6bb276e8"
+  }
+}

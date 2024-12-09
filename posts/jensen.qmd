@@ -1,0 +1,13 @@
+---
+title: "Jensen's inequality"
+categories: [statistics, optimization]
+title-block-banner: false
+---
+
+Given a convex function $f$ and a random variable $X$, the Jensen's inequality states that:
+
+$$
+\mathbb{E}[f(X)] \geq f(\mathbb{E}[X])
+$$
+
+**Proof**

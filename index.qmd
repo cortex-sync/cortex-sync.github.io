@@ -1,0 +1,13 @@
+---
+title: "Cortex"
+listing:
+  contents: posts
+  fields: [title, categories]
+  type: table
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+---
+
+
